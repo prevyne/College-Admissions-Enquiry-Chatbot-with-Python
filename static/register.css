@@ -1,0 +1,20 @@
+body{
+    background-color: maroon;
+    font-family: 'Times New Roman', Times, serif;
+    color: whitesmoke;
+}
+#login{
+    text-align: left;
+    color: white
+}
+input{
+    width: 30%;
+}
+#register{
+    background-color: green;
+}
+#register{
+    background-color: green;
+    color: whitesmoke;
+    width: 20%;
+}

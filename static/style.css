@@ -1,0 +1,91 @@
+/* static/style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: maroon;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    color: rgb(241, 236, 236);
+    background-color: maroon;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#chat-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #f36060;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+}
+
+#chat {
+    margin-bottom: 20px;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #a10e0e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#kabu_logo {
+    text-align: center;
+}
+
+.top-nav{
+    overflow: hidden;
+    background-color: #a10e0e;
+
+}
+.top-nav a{
+    padding: 14px 10px;
+    float: left;
+    color: whitesmoke;
+    text-decoration: solid;
+    text-align: center;
+    font-size: 16px;
+}
+.top-nav:hover{
+    background-color: rgb(5, 109, 10);
+    color: white;
+}
+
+.top-nav:active{
+    background-color: green;
+    color: white;
+    text-decoration: none;
+}
+.top-nav a:icon{
+    display: none;
+}
+
+.knowledge_update{
+    float:right;
+}
+.update{
+    color:azure;
+}
+input{
+width: 300px;
+height: 20px
+}

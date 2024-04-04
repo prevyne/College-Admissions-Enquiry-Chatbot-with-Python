@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="header2">Login</h2>
+        {% if error %}
+        <div class="alert" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required><br><br>
+            </div>
+            <button id="button" type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    <div id="register">Don't have an account?<a href="/register">register here</a></p>
+    <div>
+        <li class="top-nav" id="admin_login"><a href= "/admin_login">Administrator Login</a></li>
+    <div>
+</body>
+</html>

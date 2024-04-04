@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admissions Enquiry Log</title>
+</head>
+<body>
+    <h1><centre>Kabarak Admissions Chatbot Assistant</centre></h1>
+    <div id="kabu_logo">
+       <img src="{{ url_for('static', filename='kabu_logo.png') }}">
+    </div>
+
+    <div>
+        <li class = "top-nav"><a  href ="/conversations">All Chatbot Conversations</a></li>
+        <li class = "top-nav"><a  href ="/escalated">Escalated Queries</a></li>
+    </div>
+    </body>
+</html>

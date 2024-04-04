@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(226, 19, 19);
+}
+
+.header2{
+    text-align: center;
+}
+.alert{
+    color: red;
+}
+#button{
+    background-color: green;
+    color: whitesmoke;
+    width: 20%;
+}
+input{
+    width: 30%;
+}
