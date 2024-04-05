@@ -9,27 +9,60 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="header2">Login</h2>
+        <h2 class="header2">User Login</h2>
         {% if error %}
         <div class="alert" role="alert">
             {{ error }}
         </div>
         {% endif %}
-        <form method="post">
+        <form id="loginForm" method="post">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Username</label><br>
                 <input type="text" class="form-control" id="username" name="username" required><br><br>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required><br><br>
+                <label for="password">Password</label><br>
+                <input type="password" class="form-control" id="password" name="password" required><br>
+                Toggle Password visibility<br>
+                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
             </div>
-            <button id="button" type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-    <div id="register">Don't have an account?<a href="/register">register here</a></p>
+    
     <div>
         <li class="top-nav" id="admin_login"><a href= "/admin_login">Administrator Login</a></li>
     <div>
+
+        <script>
+            function togglePasswordVisibility() {
+                var passwordField = document.getElementById("password");
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                } else {
+                    passwordField.type = "password";
+                }
+            }
+            
+            // Validate form on submission
+            document.getElementById("registrationForm").addEventListener("submit", function(event) {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+    
+                // Validate username
+                if (/^\d/.test(username)) {
+                    alert("Username cannot start with a number.");
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate password
+                if (!/(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}/.test(password)) {
+                    alert("Password should be at least 6 characters long and contain at least one uppercase letter, one digit, and one symbol.");
+                    event.preventDefault();
+                    return;
+                }
+            });
+        </script>
 </body>
 </html>
