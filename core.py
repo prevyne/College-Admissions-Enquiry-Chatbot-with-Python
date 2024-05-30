@@ -1,8 +1,6 @@
 import json
 import sqlite3
 from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
-from chatterbot.trainers import ChatterBotCorpusTrainer
 from datetime import datetime
 import time
 
@@ -16,7 +14,7 @@ chatbot = ChatBot(
         {
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'Sorry, I am unable to process your request. Please try again, or contact us for help.',
-            'maximum_similarity_threshold': 0.90
+            'maximum_similarity_threshold': 0.10
         }
     ],
     preprocessors=[

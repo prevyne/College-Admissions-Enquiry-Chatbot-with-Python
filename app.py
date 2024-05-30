@@ -1,24 +1,23 @@
 from core import *
 from update import *
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import sqlite3
 from datetime import datetime
 
 import nltk
 from nltk.stem import WordNetLemmatizer
 
-#nltk.download('punkt')
-#nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('wordnet')
 
 # Initializing the lemmatizer
 lemmatizer = WordNetLemmatizer()
 
-
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = 'KabuChat' 
+app.secret_key = 'KabuChat'
 
-#Routing the update page
+# Routing the update page
 @app.route('/update')
 def frame_content():
     return render_template('update.html')
@@ -36,7 +35,7 @@ def save():
         "responses": responses
     }
 
-# Check if an intent with the same name already exists
+    # Check if an intent with the same name already exists
     existing_intent = next((intent for intent in intents['intents'] if intent['intent'] == new_intent['intent']), None)
     if existing_intent:
         # Update existing intent
@@ -45,7 +44,7 @@ def save():
     else:
         # Add new intent
         intents['intents'].append(new_intent)
-    
+
     save_intents(intents)
     return jsonify({'success': True})
 
@@ -61,7 +60,8 @@ def create_users_table():
                 email TEXT NOT NULL
             )
         ''')
-create_users_table() # Creates the "users" table when the application starts
+
+create_users_table()  # Creates the "users" table when the application starts
 
 # Route for the home page (registration form)
 @app.route("/")
@@ -85,7 +85,8 @@ def register():
 
         # Insert the new user into the database
         cursor.execute('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', (username, password, email))
-        return render_template('login.html')
+        conn.commit()
+    return render_template('login.html')
 
 # Route for the user login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -94,8 +95,8 @@ def login():
         # Perform user authentication
         username = request.form['username']
         password = request.form['password']
-        
-        #check credentials against a database
+
+        # Check credentials against a database
         if verify_user(username, password):
             session['username'] = username
             return redirect(url_for('chat'))
@@ -112,9 +113,8 @@ def verify_user(username, password):
         user = cursor.fetchone()
     return user is not None
 
-
 # Route for admin registration
-@app.route("/register", methods=["POST"])
+@app.route("/admin_register", methods=["POST"])
 def admin_register():
     username = request.form["username"]
     password = request.form["password"]
@@ -130,18 +130,18 @@ def admin_register():
 
         # Insert the new user into the database
         cursor.execute('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', (username, password, email))
-        return render_template('admin_login.html')
+        conn.commit()
+    return render_template('admin_login.html')
 
-
-#route for administrator login
+# Route for administrator login
 @app.route('/admin_login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
         # Perform user authentication
         username = request.form['username']
         password = request.form['password']
-        
-        #check credentials against a database
+
+        # Check credentials against a database
         if verify_user(username, password):
             session['username'] = username
             return redirect(url_for('display_conversations'))
@@ -161,18 +161,18 @@ def logout():
 def chat():
     if 'username' not in session:
         return redirect(url_for('login'))
-
     return render_template('chat.html')
 
 # Function to determine if user input matches any intent
 def find_intent(user_input):
+    intents_data = load_intents()
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            if pattern.lower() in user_input.lower():
+            if pattern.lower() in user_input.lower() or user_input.lower() in pattern.lower():
                 return intent['intent']
     return None
 
-#chatbot interaction
+# Chatbot interaction
 @app.route("/get")
 def get_bot_response():
     user_input = request.args.get('msg')
@@ -194,7 +194,7 @@ def get_bot_response():
     return response
 
 ######################################################################
-#route for conversations_log page
+# Route for conversations_log page
 @app.route('/admin')
 def display_conversations():
     # Connect to the SQLite database
@@ -214,37 +214,37 @@ def display_conversations():
     conn.close()
     return render_template('conversation_logs.html', conversations=conversations)
 
-#route for conversations page
+# Route for conversations page
 @app.route('/conversations')
 def display_all_conversations():
     # Connect to the SQLite database
     conn = sqlite3.connect('chatbot_conversations.db')
     c = conn.cursor()
-    
+
     # Fetch conversations from the database
     c.execute("SELECT * FROM conversations")
     conversations = c.fetchall()
-    
-    #close database connection
-    c = conn.cursor()
+
+    # Close the database connection
+    conn.close()
 
     # Render the template with conversations data
     return render_template('conversations.html', conversations=conversations)
 
-#Route for Escalated queries page
+# Route for Escalated queries page
 @app.route('/escalated')
 def display_escalated_queries():
     # Connect to the SQLite database
     conn = sqlite3.connect('chatbot_conversations.db')
     c = conn.cursor()
-    
+
     # Fetch conversations from the database where user input was not recognized
-    c.execute("SELECT * FROM conversations where bot_response = 'I could not recognize your query. Please specify more'")
+    c.execute("SELECT * FROM conversations WHERE bot_response = 'I could not recognize your query. Please specify more'")
     conversations = c.fetchall()
-    
+
     # Close the database connection
     conn.close()
-    
+
     # Render the template with conversations data
     return render_template('escalated.html', conversations=conversations)
 
@@ -263,7 +263,8 @@ def store_conversation(user_input, bot_response, username):
         INSERT INTO conversations (user_input, bot_response, timestamp, username) VALUES (?, ?, ?, ?)
     ''', (user_input, bot_response, timestamp, username))
     conn.commit()
+    conn.close()
 
 # Run the Flask app
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

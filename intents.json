@@ -11,12 +11,14 @@
                 "What's up",
                 "how are ya",
                 "hey",
-                "what's up"
+                "what's up",
+                "Hello"
             ],
             "responses": [
                 "Hi there, how can I help?",
                 "Hello!",
-                "Good to see you again!"
+                "Good to see you again!",
+                "Hello. How may I help you today?"
             ],
             "extension": {
                 "function": "",
@@ -355,7 +357,8 @@
                 "where is the hostel",
                 "how big is the hostel",
                 "distance between college and hostel",
-                "distance between hostel and college"
+                "distance between hostel and college",
+                "hostel booking"
             ],
             "responses": [
                 "For hostel details, contact us at accommodation@kabarak.ac.ke or visit <a target=\"_blank\" href=\"https://kabarak.ac.ke/hostel-accommodation\"> here</a>"
@@ -470,25 +473,28 @@
             },
             "context": {
                 "in": "",
-                "out": "DocumentsForAdmission",
+                "out": "itemsforadmission",
                 "clear": true
             },
             "entityType": "NA",
             "entities": []
         },
         {
-            "intent": "floors",
+            "intent": "application",
             "patterns": [
-                "size of campus",
-                "building size",
-                "How many floors does college have",
-                "floors in college",
-                "floors in college",
-                "how tall is UNI's College of Engineering college building",
-                "floors"
+                "How do I apply to Kabarak?",
+                "How do I apply to the university?",
+                "What is the application process",
+                "Application procedure",
+                "Application process",
+                "How to apply",
+                "The application process",
+                "Application",
+                "How do I apply"
             ],
             "responses": [
-                "My College has total 2 floors "
+                "Application forms and further details are available from the offices or through our university website <a target=\"_blank\" href=\"https://kabarak.ac.ke/downloads\">click here</a>.\n To initiate the application process, you can easily download the application form <a target=\"_blank\" href=\"https://www.kabarak.ac.ke/images/downloads/docs/application_form.pdf\">Application form</a> , complete it, scan the filled document, and submit it electronically through the email address admissions@kabarak.ac.ke. Alternatively, you may also return the duly completed forms to any of the following designated offices for your convenience:\n The Admissions Office\n Kabarak University, Main Campus,\n Private Bag-20157, KABARAK,\n Tel. 020-2114658 0729-223370,\n admissions@kabarak.ac.ke ",
+                ""
             ],
             "extension": {
                 "function": "",
@@ -515,7 +521,7 @@
                 "What is next lecture"
             ],
             "responses": [
-                "Timetable provide direct to the students OR To know about syllabus visit <a target=\"_blank\" href=\"TIMETABLE LINK\"> here</a>"
+                "Timetable provide to the respective class representatives for each course"
             ],
             "extension": {
                 "function": "",
@@ -648,18 +654,15 @@
         {
             "intent": "placement",
             "patterns": [
-                "What is college placement",
-                "Which companies visit in college",
-                "What is average package",
-                "companies visit",
-                "package",
+                "Placed students registration procedure",
+                "KUCCPS Placed students",
                 "About placement",
                 "placement",
-                "recruitment",
-                "companies"
+                "Placed student registration",
+                "Joining instructions for placed students"
             ],
             "responses": [
-                "To know about placement visit <a target=\"_blank\" href=\"PLACEMENT INFORMATION LINK FROM YOUR UNIVERSITY WEBSITE IF THEY HAVE\">here</a>"
+                "Step1: Biodata and Admission letter: To download your admission letter kindly fill out the online bio-data form <a target=\"_blank\" href=\"https://application.kabarak.ac.ke/gsp/login-kuccps\">here</a>\nStep2: Download admission requirements: To download other admission requirements <a target=\"_blank\" href=\"https://kabarak.ac.ke/images/downloads/docs/list_of_requirements.pdf\"> here</a>\nStep 3: Fee structure: To access the KUCCPS fee structure CLICK <a target=\"_blank\" href=\"https://kabarak.ac.ke/images/downloads/fee_structure/KABU_KUCCPS_placed_students_fee_structure.pdf\">here</a>\nStep 4: Hostel and accommodation: To view our hostel and accommodation rates <a target=\"_blank\" href=\"https://kabarak.ac.ke/hostel-accommodation\">here</a>\nStep 5: Defer studies: In case you wish to defer your studies to next semester CLICK <a target=\"_blank\" href=\"https://kabarak.ac.ke/images/downloads/docs/deferral_form.pdf\">here</a> to download deferral form.\n Step 6: Fill the form and email it to admissions@kabarak.ac.keStudent list: To view the list of KUCCPS 2022 students placed in Kabarak University <a target=\"_blank\" href=\"https://kabarak.ac.ke/images/downloads/docs/kabarak-university-placement-list-2023-2024.pdf\">here</a>\nStep 7: Programmes Codes:  CLICK <a target=\"_blank\" href=\"https://kabarak.ac.ke/images/downloads/docs/KUCCPS_programme_codes.pdf\">here</a>\nStep 8: Higher Education Loans Board (HELB) may be made through the HELB website: https://www.helb.co.ke"
             ],
             "extension": {
                 "function": "",
@@ -718,7 +721,7 @@
                 "admission process"
             ],
             "responses": [
-                "Application can also be submitted online through the Unversity's  <a target=\"_blank\" href=\"LINK OF ADMISSION DOCUMENT\">website</a>"
+                "Application forms and further details are available from the offices or through our university website <a target=\"_blank\" href=\"https://kabarak.ac.ke/downloads\">click here</a>.\n To initiate the application process, you can easily download the form, complete it, scan the filled document, and submit it electronically through the email address admissions@kabarak.ac.ke. Alternatively, you may also return the duly completed forms to any of the following designated offices for your convenience:\n The Admissions Office\n Kabarak University, Main Campus,\n Private Bag-20157, KABARAK,\n Tel. 020-2114658 0729-223370,\n admissions@kabarak.ac.ke "
             ],
             "extension": {
                 "function": "",
@@ -728,52 +731,6 @@
             "context": {
                 "in": "",
                 "out": "ProcessOfAdmission",
-                "clear": true
-            },
-            "entityType": "NA",
-            "entities": []
-        },
-        {
-            "intent": "scholarship",
-            "patterns": [
-                "scholarship",
-                "Is scholarship available",
-                "scholarship engineering",
-                "scholarship it",
-                "scholarship ce",
-                "scholarship mechanical",
-                "scholarship civil",
-                "scholarship chemical",
-                "scholarship for AI/ML",
-                "available scholarships",
-                "scholarship for computer engineering",
-                "scholarship for IT engineering",
-                "scholarship for mechanical engineering",
-                "scholarship for civil engineering",
-                "scholarship for chemical engineering",
-                "list of scholarship",
-                "comps scholarship",
-                "IT scholarship",
-                "mechanical scholarship",
-                "civil scholarship",
-                "chemical scholarship",
-                "automobile scholarship",
-                "first year scholarship",
-                "second year scholarship",
-                "third year scholarship",
-                "fourth year scholarship"
-            ],
-            "responses": [
-                "Many government scholarships are supported by our university. For details and updates visit <a target=\"_blank\" href=\"(SCHOLARSHIP DETAILS LINK)\">here</a>"
-            ],
-            "extension": {
-                "function": "",
-                "entities": false,
-                "responses": []
-            },
-            "context": {
-                "in": "",
-                "out": "ScholarshipCriteria",
                 "clear": true
             },
             "entityType": "NA",
@@ -805,35 +762,6 @@
             "entities": []
         },
         {
-            "intent": "college intake",
-            "patterns": [
-                "max number of students",
-                "number of seats per branch",
-                "number of seats in each branch",
-                "maximum number of seats",
-                "maximum students intake",
-                "What is college intake",
-                "how many stundent are taken in each branch",
-                "seat allotment",
-                "seats"
-            ],
-            "responses": [
-                "For IT, Computer and extc 60 per branch and seat may be differ for different department."
-            ],
-            "extension": {
-                "function": "",
-                "entities": false,
-                "responses": []
-            },
-            "context": {
-                "in": "",
-                "out": "Intake",
-                "clear": true
-            },
-            "entityType": "NA",
-            "entities": []
-        },
-        {
             "intent": "uniform",
             "patterns": [
                 "college dress code",
@@ -847,7 +775,7 @@
                 "do we have to wear uniform"
             ],
             "responses": [
-                "ENTER YOUR OWN UNIVERSITY UNIFORM CIRCULER"
+                "Kabarak university has no uniform attire for students.\nHowever, we have strict dressing and grooming Policies. We encourage students to dress in official atttire or decent decent casual clothing when necessary\n,"
             ],
             "extension": {
                 "function": "",
@@ -941,38 +869,6 @@
             "entities": []
         },
         {
-            "intent": "vacation",
-            "patterns": [
-                "holidays",
-                "when will semester starts",
-                "when will semester end",
-                "when is the holidays",
-                "list of holidays",
-                "Holiday in these year",
-                "holiday list",
-                "about vacations",
-                "about holidays",
-                "When is vacation",
-                "When is holidays",
-                "how long will be the vacation"
-            ],
-            "responses": [
-                "Academic calender is given to you by your class-soordinators after you join your respective classes"
-            ],
-            "extension": {
-                "function": "",
-                "entities": false,
-                "responses": []
-            },
-            "context": {
-                "in": "",
-                "out": "AcademicCalendar",
-                "clear": true
-            },
-            "entityType": "NA",
-            "entities": []
-        },
-        {
             "intent": "sports",
             "patterns": [
                 "sports and games",
@@ -1060,71 +956,16 @@
             "entities": []
         },
         {
-            "intent": "ragging",
+            "intent": "Timetable",
             "patterns": [
-                "ragging",
-                "is ragging practice active in college",
-                "does college have any antiragging facility",
-                "is there any ragging cases",
-                "is ragging done here",
-                "ragging against",
-                "antiragging facility",
-                "ragging juniors",
-                "ragging history",
-                "ragging incidents"
-            ],
-            "responses": [
-                "We are Proud to tell you that our college provides ragging free environment, and we have strict rules against ragging"
-            ],
-            "extension": {
-                "function": "",
-                "entities": false,
-                "responses": []
-            },
-            "context": {
-                "in": "",
-                "out": "Ragging",
-                "clear": true
-            },
-            "entityType": "NA",
-            "entities": []
-        },
-        {
-            "intent": "hod",
-            "patterns": [
-                "hod",
-                "hod name",
-                "who is the hod"
-            ],
-            "responses": [
-                "HODs differ for each branch, please be more specific like: (HOD it)"
-            ],
-            "extension": {
-                "function": "",
-                "entities": false,
-                "responses": []
-            },
-            "context": {
-                "in": "",
-                "out": "HODName",
-                "clear": true
-            },
-            "entityType": "NA",
-            "entities": []
-        },
-        {
-            "intent": "Mess Timetable",
-            "patterns": [
-                "Mess TimeTable",
                 "what is the Mess Table",
                 "Bus Timetable",
                 "timetable",
                 "what is the timetable",
-                "what is the bus timetable",
-                "Academic Calander"
+                "what is the bus timetable"
             ],
             "responses": [
-                "Timetable Link visit <a target=\"_blank\" href=\"https://lightningmcqueen-95.github.io/collage/index.html\"> here</a>"
+                "Timetables are issued to class repressentatives after you join your respective classees"
             ],
             "extension": {
                 "function": "",
